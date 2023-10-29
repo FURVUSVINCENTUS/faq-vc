@@ -137,14 +137,13 @@ function makeHtml($npage, $title, $keyword, $content, $str_wiki, $class, $direct
 		</header>
 		<hr>
 		<section class="main-nav">
-		<!--<section class="'.$class.'">-->';
+		<!--<section class="'.$class.'">-->
+		</section>
+		<section class="content">';
 		foreach ($content as $key => $value) {
 			$txt .= '<h1>'.$value->question->txt.'</h1>';
 		}
-		$txt .= '</section>
-		<section class="content">
-			<hr>
-			'.$str_wiki.'
+		$txt .= '<hr>
 		</section>
 		<footer>
 			<nav class="footer">
@@ -286,7 +285,8 @@ if(file_exists($directory[2].$npage.'.json'))
 
 	/* $add = array();
 	$content = json_encode($add, JSON_PRETTY_PRINT); */
-if(isset($_POST['question'])) {
+if(isset($_POST['question']))
+{
 	$pos = $_POST['pos'];
 	$question = $_POST['question'];
 	$content[$pos]->question->txt = $question;
