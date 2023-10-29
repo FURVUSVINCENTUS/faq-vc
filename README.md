@@ -1,6 +1,6 @@
 # faq-vc
 
-This is my own PHP CMS running on a json database files.
+This is my own PHP CMS running on json database files.
 
 ## Philosophy:
 
