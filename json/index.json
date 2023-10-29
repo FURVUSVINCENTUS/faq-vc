@@ -1,0 +1,42 @@
+{
+    "title": "Page Principale",
+    "keyword": "toto, go, fvaj, faq",
+    "admin": "Page Principale",
+    "webm": "50a9c7dbf0fa09e8969978317dca12e8",
+    "user": "ee11cbb19052e40b07aac0ca060c23ee",
+    "lvl_1": "Page Principale",
+    "lvl_2": "Page Principale",
+    "lvl_3": "Page Principale",
+    "body": [
+        {
+            "question": {
+                "txt": "Default_question",
+                "content": [
+                    {
+                        "type": "wiki",
+                        "preform": "# Ceci est la question par d\u00e9faut",
+                        "class": "main-nav"
+                    },
+                    {
+                        "type": "img",
+                        "alt": "ceci est une image",
+                        "path": ".\/img\/bulle-faq.png",
+                        "size": "50%"
+                    }
+                ]
+            }
+        },
+        {
+            "question": {
+                "txt": "question_n",
+                "content": [
+                    {
+                        "type": "wiki",
+                        "preform": "- item1- item2- item3",
+                        "class": "main-nav"
+                    }
+                ]
+            }
+        }
+    ]
+}
