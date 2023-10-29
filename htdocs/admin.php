@@ -418,13 +418,13 @@ function print_styles($directory)
 
 class Question
 {
-	// public string $qlist = "";
 
 	public function printQuestions($content)
 	{
 		$qlist = "";
 		foreach ($content as $key => $value) {
 				$qlist = "\n\t\t\t\t<p>".$value->question->txt."</p>";
+				$qlist .= "\n\t\t\t\t<input type='hidden' name='type' value='7'>&#9998;</button>";
 				$qlist .= "\n\t\t\t\t<button type='submit' name='pos' value='".$key."'>&#9998;</button>";
 				$qlist .= "\n\t\t\t\t<button name='type' type='submit' id='label' value='3'>&plus;</button>";
 				$qlist .= "\n\t\t\t\t<button name='type' type='submit' id='label' value='4'>&#128465;</button><br>";
@@ -451,7 +451,34 @@ class Question
 			$content[$pos] = $_POST['question'];
 		}
 	}
+	// Fonciton qui affiche la / les elements de réponse à partir de l'objet $content
+	public function showContent($content)
+	{
+		$pos = $_POST['pos'];
+		$txt = "";
+		$txt .= "<!--Debut du formulaire des modules-->";
+		$txt .= "\n<form action='admin.php' method='post' enctype='multipart' class='main-nav'>";
+		$txt .= "\n\t<fieldset>\n<legend>Content of ".$content[$pos]->question->txt."</legend>";
+		$txt .= "\n\t\t<ul>";
+		foreach ($content[$pos]->question->content as $key => $value)
+		{
+			//$txt .= "\n\t\t\t<h3>Module ".$key."</h3>";
+			foreach ($value as $name => $str)
+			{
+				//$txt .= "\n\t\t\t<li>".$name.": ".$str."</li>";
+				$txt .= match ($name)
+				{
+					"type" => "\n\t\t\t<h4>".$key." &rarr; ".$str."</h4>",
+					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$str.'">'.$name.'</label><input type="text" name="'.$key.'-'.$name.'-'.$str.'"></input>',
+					"preform" => '<label for="'.$key.'-'.$name.'-'.$str.'">'.$name.'</label name="'.$key.'-'.$name.'-'.$str.'"><textarea name="'.$key.'-'.$name.'-'.$str.'"></textarea>',
+				};
+			}
+		}
+		$txt .= "\n\t\t</ul>\n\t</fieldset>\n</form>\n";
+		echo $txt;
+	}
 }
+
 
 
 function deleteQuestion($content)
@@ -636,8 +663,8 @@ if(isset($_POST['r-images']))
 							</form>
 							<!--Fin formulaire stylesheet-->
 					<?php
-					break;
-					case 6:
+				break;
+				case 6:
 					// Téléverser une image && Changer la feuille de style
 						?>
 						<!-- Formulaire image-->
@@ -680,7 +707,20 @@ if(isset($_POST['r-images']))
 						<!--Fin du formulaire image-->
 						<?php
 						break;
+					case 7:
+						// Affiche le contenu de la question selectionnee
+							$questions = new Question();
+							$questions->showContent($content);
+						break;
 			}
 		?>
+		<?php
+		// Sanity checks
+		//print_r($content[0]);
+		//echo ">>> >>>";
+		//print_r($content[0]->question);
+		//echo ">>> >>>";
+		//print_r($content[0]->question->txt);
+		 ?>
 </body>
 </html>
