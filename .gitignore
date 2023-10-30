@@ -1,3 +1,5 @@
+# Fichiers / dossiers à ne pas prendre en compte lors de commits
+
 $gitignore
 
 htdocs/*.html
@@ -6,8 +8,12 @@ htdocs/img/*
 
 vendor/amphp/*
 
+# Ignore tous les fichiers json sauf index.json (à des fins de test)
+
 json/*
 
 !json/index.json
+
+# Fichiers spécifiques à un utilisateur (à ne pas répliquer)
 
 # $GIT_DIR/info/exclude
