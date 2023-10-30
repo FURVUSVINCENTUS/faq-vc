@@ -1,7 +1,13 @@
-# $GIT_DIR/info/exclude
+$gitignore
 
 htdocs/*.html
 
 htdocs/img/*
 
 vendor/amphp/*
+
+json/*
+
+!json/index.json
+
+# $GIT_DIR/info/exclude
