@@ -459,22 +459,25 @@ class Question
 		$txt .= "<!--Debut du formulaire des modules-->";
 		$txt .= "\n<form action='admin.php' method='post' enctype='multipart' class='main-nav'>";
 		$txt .= "\n\t<fieldset>\n<legend>Content of ".$content[$pos]->question->txt."</legend>";
-		$txt .= "\n\t\t<ul>";
 		foreach ($content[$pos]->question->content as $key => $value)
 		{
 			//$txt .= "\n\t\t\t<h3>Module ".$key."</h3>";
+			$i = 0;
 			foreach ($value as $name => $str)
 			{
 				//$txt .= "\n\t\t\t<li>".$name.": ".$str."</li>";
+				$txt .= "\n\t\t";
 				$txt .= match ($name)
 				{
-					"type" => "\n\t\t\t<h4>".$key." &rarr; ".$str."</h4>",
-					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$str.'">'.$name.'</label><input type="text" name="'.$key.'-'.$name.'-'.$str.'"></input>',
-					"preform" => '<label for="'.$key.'-'.$name.'-'.$str.'">'.$name.'</label name="'.$key.'-'.$name.'-'.$str.'"><textarea name="'.$key.'-'.$name.'-'.$str.'"></textarea>',
+					"type" => "<h4>".$key." &rarr; ".$str."</h4>",
+					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<input type="text" name="'.$key.'-'.$name.'-'.$i.'">',
+					"preform" => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<textarea name="'.$key.'-'.$name.'-'.$i.'"></textarea>',
 				};
+				$i++;
 			}
 		}
-		$txt .= "\n\t\t</ul>\n\t</fieldset>\n</form>\n";
+		$txt .= "\n\t</fieldset>\n</form>\n";
+		$txt .= "<!--Fin du formulaire des modules-->\n";
 		echo $txt;
 	}
 }
