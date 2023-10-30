@@ -1,0 +1,7 @@
+# $GIT_DIR/info/exclude
+
+htdocs/*.html
+
+htdocs/img/*
+
+vendor/amphp/*
