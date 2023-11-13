@@ -363,7 +363,7 @@ if(isset($_POST['save']))
 
 // _Boucles_foreach
 
-
+	// faire un match à la place de ces fonctions
 	// fonction qui sort les fichiers sous forme de datalist (remove)
 function print_remove($dir)
 {
@@ -459,6 +459,10 @@ class Question
 		$txt .= "<!--Debut du formulaire des modules-->";
 		$txt .= "\n<form action='admin.php' method='post' enctype='multipart' class='main-nav'>";
 		$txt .= "\n\t<fieldset>\n<legend>Content of ".$content[$pos]->question->txt."</legend>";
+		$txt .= "\n\t<button name='type' type='submit' id='label' value='1'>&#43; img</button>";
+		$txt .= "\n\t<button name='type' type='submit' id='wiki' value='2'>&#43; wiki</button>";
+		$txt .= "\n\t<input type='hidden' name='type' value='0'>";
+		$txt .= "\n\t<button type='submit'>Abort</button>";
 		foreach ($content[$pos]->question->content as $key => $value)
 		{
 			//$txt .= "\n\t\t\t<h3>Module ".$key."</h3>";
@@ -470,12 +474,13 @@ class Question
 				$txt .= match ($name)
 				{
 					"type" => "<h4>".$key." &rarr; ".$str."</h4>",
-					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<input type="text" name="'.$key.'-'.$name.'-'.$i.'">',
+					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<input type="text" name="'.$key.'-'.$name.'-'.$i.'"></br>',
 					"preform" => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<textarea name="'.$key.'-'.$name.'-'.$i.'"></textarea>',
 				};
 				$i++;
 			}
 		}
+		$txt .= "\n\t</br></br><input type='submit' name='save-content' value='Save'>";
 		$txt .= "\n\t</fieldset>\n</form>\n";
 		$txt .= "<!--Fin du formulaire des modules-->\n";
 		echo $txt;
