@@ -2,7 +2,7 @@
 /* ========================================================
 # File name	 	: admin.php
 # Begin		 		: 2023.07.03
-# Last Update	: 2023.10.29
+# Last Update	: 2023.11.13
 #
 # Description	: CRUD based on a json DB
 #
@@ -461,8 +461,8 @@ class Question
 		$txt .= "\n\t<fieldset>\n<legend>Content of ".$content[$pos]->question->txt."</legend>";
 		$txt .= "\n\t<select name='mod'>";
 		$txt .= "\n\t\t<option selected>type</option>";
-		$txt .= "\n\t\t<option>img</option>";
-		$txt .= "\n\t\t<option>wiki</option>";
+		$txt .= "\n\t\t<option value='1'>img</option>";
+		$txt .= "\n\t\t<option value='2'>wiki</option>";
 		$txt .= "\n\t</select>";
 		$txt .= "\n\t<input type='hidden' name='type' value='7'>";
 		$txt .= "\n\t<button name='save-content' type='submit'>Add module</button>";
