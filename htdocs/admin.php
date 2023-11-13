@@ -459,10 +459,16 @@ class Question
 		$txt .= "<!--Debut du formulaire des modules-->";
 		$txt .= "\n<form action='admin.php' method='post' enctype='multipart' class='main-nav'>";
 		$txt .= "\n\t<fieldset>\n<legend>Content of ".$content[$pos]->question->txt."</legend>";
-		$txt .= "\n\t<button name='type' type='submit' id='label' value='1'>&#43; img</button>";
-		$txt .= "\n\t<button name='type' type='submit' id='wiki' value='2'>&#43; wiki</button>";
+		$txt .= "\n\t<select name='mod'>";
+		$txt .= "\n\t\t<option selected>type</option>";
+		$txt .= "\n\t\t<option>img</option>";
+		$txt .= "\n\t\t<option>wiki</option>";
+		$txt .= "\n\t</select>";
+		$txt .= "\n\t<input type='hidden' name='type' value='7'>";
+		$txt .= "\n\t<button name='save-content' type='submit'>Add module</button>";
 		$txt .= "\n\t<input type='hidden' name='type' value='0'>";
 		$txt .= "\n\t<button type='submit'>Abort</button>";
+
 		foreach ($content[$pos]->question->content as $key => $value)
 		{
 			//$txt .= "\n\t\t\t<h3>Module ".$key."</h3>";
@@ -471,11 +477,19 @@ class Question
 			{
 				//$txt .= "\n\t\t\t<li>".$name.": ".$str."</li>";
 				$txt .= "\n\t\t";
+				$options = "";
+				$options .= '<select name="'.$key.'-'.$name.'-'.$i.'">';
+				$options .= "\n\t\t".'<option>Chose image</option>';
+				//foreach ($variable as $key => $value) {
+				//	// code...
+				//}
+				$options .= "\n\t\t</select></br>";
 				$txt .= match ($name)
 				{
 					"type" => "<h4>".$key." &rarr; ".$str."</h4>",
-					"class", "alt", "path", "size"  => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<input type="text" name="'.$key.'-'.$name.'-'.$i.'"></br>',
+					"class", "alt", "size"  => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<input type="text" name="'.$key.'-'.$name.'-'.$i.'"></br>',
 					"preform" => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".'<textarea name="'.$key.'-'.$name.'-'.$i.'"></textarea>',
+					"path" => '<label for="'.$key.'-'.$name.'-'.$i.'">'.$name.'</label>'."\n\t\t".$options,
 				};
 				$i++;
 			}
@@ -487,6 +501,13 @@ class Question
 	}
 }
 
+//function editQuestion($content)
+//{
+//	if(isset($_POST['save-content']))
+//	{
+//		$content->
+//	}
+//}
 
 
 function deleteQuestion($content)
