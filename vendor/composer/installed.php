@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => '__root__',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'amphp/amp' => array(
+            'pretty_version' => 'v3.0.0',
+            'version' => '3.0.0.0',
+            'reference' => 'aaf0ec1d5a2c20b523258995a10e80c1fb765871',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../amphp/amp',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'revolt/event-loop' => array(
+            'pretty_version' => 'v1.0.3',
+            'version' => '1.0.3.0',
+            'reference' => '0fe2d31e1cddd26664e55d383d3d5da613334c03',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../revolt/event-loop',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);
