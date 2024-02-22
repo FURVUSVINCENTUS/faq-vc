@@ -454,7 +454,8 @@ class Question
 	// Fonciton qui affiche la / les elements de réponse à partir de l'objet $content
 	public function showContent($content)
 	{
-		$pos = $_POST['pos'];
+		$pos = NULL;
+		if(isset($_POST['pos'])){$pos = $_POST['pos'];}
 		$txt = "";
 		$txt .= "<!--Debut du formulaire des modules-->";
 		$txt .= "\n<form action='admin.php' method='post' enctype='multipart' class='main-nav'>";
